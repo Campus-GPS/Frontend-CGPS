@@ -1,0 +1,319 @@
+/* Login / signup design, adapted from the Zola AI project.
+   Zola set its fonts and colours on <body>; here they are applied to
+   .auth-page so they cannot affect any other page added later. */
+
+.auth-page,
+.auth-page * {
+  box-sizing: border-box;
+}
+
+.auth-page {
+  font-family:
+    Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #f5f5f5;
+}
+
+.auth-page button,
+.auth-page input {
+  font: inherit;
+}
+
+/* Undo the global heading styles so the Zola look is kept. */
+.auth-page h1,
+.auth-page h2 {
+  color: inherit;
+  font-family: inherit;
+  font-weight: 700;
+  letter-spacing: normal;
+  line-height: normal;
+}
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(0, 212, 255, 0.2),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(255, 0, 170, 0.16),
+      transparent 34%
+    ),
+    linear-gradient(135deg, #0a0e27 0%, #1a0f35 100%);
+}
+
+.auth-container {
+  position: relative;
+  width: min(940px, 100%);
+  min-height: 540px;
+  overflow: hidden;
+  border-radius: 30px;
+  background: rgba(10, 14, 39, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
+}
+
+.form-panel {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  transition:
+    transform 0.65s ease,
+    opacity 0.45s ease;
+}
+
+.login-panel {
+  left: 0;
+  z-index: 2;
+}
+
+.signup-panel {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+  transform: translateX(100%);
+}
+
+.auth-container.signup-mode .login-panel {
+  transform: translateX(100%);
+  opacity: 0;
+  z-index: 1;
+}
+
+.auth-container.signup-mode .signup-panel {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 2;
+}
+
+.auth-form {
+  height: 100%;
+  padding: 54px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-form h2 {
+  font-size: 34px;
+  margin: 0 0 10px;
+}
+
+.auth-form p {
+  margin: 0 0 26px;
+  color: rgba(255, 255, 255, 0.58);
+  line-height: 1.6;
+}
+
+.auth-form input {
+  width: 100%;
+  height: 48px;
+  margin-bottom: 13px;
+  padding: 0 15px;
+  border-radius: 15px;
+  border: 1px solid rgba(0, 212, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  outline: none;
+}
+
+.auth-form input::placeholder {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.auth-form input:focus {
+  border-color: rgba(0, 212, 255, 0.45);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.08);
+}
+
+.auth-form button {
+  height: 48px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  color: white;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00d4ff, #0099ff);
+  box-shadow: 0 14px 28px rgba(0, 153, 255, 0.22);
+}
+
+.auth-form button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.auth-form button:focus-visible,
+.ghost-btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.auth-error {
+  color: #ffd3d3;
+  background: rgba(255, 80, 80, 0.1);
+  border: 1px solid rgba(255, 80, 80, 0.2);
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  margin: 4px 0 12px;
+}
+
+/* Neutral message (e.g. "backend not connected yet"), same shape as .auth-error. */
+.auth-notice {
+  color: #d3f4ff;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.22);
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  margin: 4px 0 12px;
+}
+
+/* Labels for screen readers; the design shows placeholders instead. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.overlay-panel {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 10;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.65s ease;
+  background:
+    linear-gradient(135deg, rgba(0, 212, 255, 0.24), rgba(255, 0, 170, 0.18)),
+    rgba(0, 0, 0, 0.18);
+}
+
+.auth-container.signup-mode .overlay-panel {
+  transform: translateX(-100%);
+}
+
+.overlay-content {
+  height: 100%;
+  padding: 54px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+
+.auth-logo {
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 28px;
+  background: linear-gradient(135deg, #00d4ff, #00ff88);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.overlay-content h1 {
+  font-size: 42px;
+  line-height: 1.05;
+  margin: 0 0 16px;
+}
+
+.overlay-content p {
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.7;
+  max-width: 360px;
+  margin-bottom: 30px;
+}
+
+/* In Zola this was a <button>; here it is a real link (<a>) that looks the same. */
+.ghost-btn {
+  display: inline-block;
+  width: fit-content;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 800;
+  transition: 0.2s ease;
+}
+
+.ghost-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 760px) {
+  .auth-container {
+    min-height: 760px;
+  }
+
+  .form-panel,
+  .overlay-panel {
+    width: 100%;
+  }
+
+  .login-panel {
+    top: 260px;
+    left: 0;
+    height: calc(100% - 260px);
+  }
+
+  .signup-panel {
+    top: 260px;
+    left: 0;
+    height: calc(100% - 260px);
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  .auth-container.signup-mode .login-panel {
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  .auth-container.signup-mode .signup-panel {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .overlay-panel {
+    left: 0;
+    height: 260px;
+  }
+
+  .auth-container.signup-mode .overlay-panel {
+    transform: translateX(0);
+  }
+
+  .auth-form,
+  .overlay-content {
+    padding: 32px;
+  }
+
+  .overlay-content h1 {
+    font-size: 32px;
+  }
+}
