@@ -184,14 +184,6 @@ export default function AuthPage({ mode, onNavigate, onUserAuthenticated }: Auth
             >
               Continue as guest
             </button>
-
-            <button
-              type="button"
-              className="auth-home-link"
-              onClick={goTo('/home')}
-            >
-              Home
-            </button>
           </form>
         </div>
 
@@ -254,7 +246,7 @@ export default function AuthPage({ mode, onNavigate, onUserAuthenticated }: Auth
             )}
 
             <button type="submit" disabled={loading}>
-              {loading && isSignup ? 'Sending link...' : 'Sign Up with Magic Link'}
+              {loading && isSignup ? 'Registering...' : 'Register'}
             </button>
 
             <button
@@ -264,14 +256,6 @@ export default function AuthPage({ mode, onNavigate, onUserAuthenticated }: Auth
               title="Continue to live transit without signing in"
             >
               Continue as guest
-            </button>
-
-            <button
-              type="button"
-              className="auth-home-link"
-              onClick={goTo('/home')}
-            >
-              Home
             </button>
           </form>
         </div>

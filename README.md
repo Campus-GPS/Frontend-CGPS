@@ -89,7 +89,7 @@ Now open your web browser (Chrome, Edge, Safari, Firefox) and go to:
 | `/home` | **Campus Home Dashboard** | Live bus queues, wait times, virtual pass generator, and departure tables. |
 | `/auth/verify` | **Link Verification** | Automatically validates magic link tokens from incoming emails. |
 
-> **Tip:** Users can switch between Login and Sign Up using the sliding animation button, click **"Continue as guest"** to preview the dashboard without registering, or tap **"Home"** at the bottom!
+> **Tip:** Users can switch between Login and Sign Up using the sliding animation button, or click **"Continue as guest"** to explore the dashboard directly!
 
 ---
 
