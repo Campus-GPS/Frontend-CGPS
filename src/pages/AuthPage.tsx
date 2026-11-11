@@ -178,10 +178,19 @@ export default function AuthPage({ mode, onNavigate, onUserAuthenticated }: Auth
 
             <button
               type="button"
-              className="auth-switch-link"
+              className="guest-btn"
+              onClick={goTo('/home')}
+              title="Continue to live transit without signing in"
+            >
+              Continue as guest
+            </button>
+
+            <button
+              type="button"
+              className="auth-home-link"
               onClick={goTo('/home')}
             >
-              Preview Mock Campus Home Page →
+              Home
             </button>
           </form>
         </div>
@@ -250,10 +259,19 @@ export default function AuthPage({ mode, onNavigate, onUserAuthenticated }: Auth
 
             <button
               type="button"
-              className="auth-switch-link"
+              className="guest-btn"
+              onClick={goTo('/home')}
+              title="Continue to live transit without signing in"
+            >
+              Continue as guest
+            </button>
+
+            <button
+              type="button"
+              className="auth-home-link"
               onClick={goTo('/home')}
             >
-              Preview Mock Campus Home Page →
+              Home
             </button>
           </form>
         </div>

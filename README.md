@@ -84,12 +84,12 @@ Now open your web browser (Chrome, Edge, Safari, Firefox) and go to:
 
 | URL Path | Page | Description |
 |---|---|---|
-| `/` or `/home` | **Campus Home Dashboard** | Live bus queues, wait times, virtual pass generator, and departure tables. |
-| `/login` | **Sign In** | Enter your email for instant sign-in, or click Sign In with Google. |
-| `/signup` | **Create Account** | Enter your display name and email to register. |
+| `/` or `/login` | **Sign In (Default Landing)** | The default entry point! Enter your email for instant sign-in, sign in with Google, or click **"Continue as guest"** to proceed without an account. |
+| `/signup` | **Create Account** | Enter your display name and email to register with Campus GPS. |
+| `/home` | **Campus Home Dashboard** | Live bus queues, wait times, virtual pass generator, and departure tables. |
 | `/auth/verify` | **Link Verification** | Automatically validates magic link tokens from incoming emails. |
 
-> **Tip:** You can switch between Login and Sign Up using the sliding animation button on the screen!
+> **Tip:** Users can switch between Login and Sign Up using the sliding animation button, click **"Continue as guest"** to preview the dashboard without registering, or tap **"Home"** at the bottom!
 
 ---
 

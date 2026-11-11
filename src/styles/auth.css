@@ -100,29 +100,30 @@
 
 .auth-form {
   height: 100%;
-  padding: 54px;
+  padding: 44px 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .auth-form h2 {
-  font-size: 34px;
-  margin: 0 0 10px;
+  font-size: 32px;
+  margin: 0 0 8px;
 }
 
 .auth-form p {
-  margin: 0 0 26px;
+  margin: 0 0 20px;
   color: rgba(255, 255, 255, 0.58);
-  line-height: 1.6;
+  line-height: 1.5;
+  font-size: 14px;
 }
 
 .auth-form input {
   width: 100%;
-  height: 48px;
-  margin-bottom: 13px;
+  height: 46px;
+  margin-bottom: 12px;
   padding: 0 15px;
-  border-radius: 15px;
+  border-radius: 14px;
   border: 1px solid rgba(0, 212, 255, 0.16);
   background: rgba(255, 255, 255, 0.06);
   color: #fff;
@@ -139,15 +140,15 @@
 }
 
 .auth-form button {
-  height: 48px;
-  margin-top: 8px;
+  height: 46px;
+  margin-top: 6px;
   border: none;
-  border-radius: 15px;
+  border-radius: 14px;
   cursor: pointer;
   color: white;
   font-weight: 800;
   background: linear-gradient(135deg, #00d4ff, #0099ff);
-  box-shadow: 0 14px 28px rgba(0, 153, 255, 0.22);
+  box-shadow: 0 12px 26px rgba(0, 153, 255, 0.22);
 }
 
 .auth-form button:disabled {
@@ -325,10 +326,10 @@
   justify-content: center;
   gap: 12px;
   width: 100%;
-  height: 48px;
+  height: 46px;
   margin-top: 0 !important;
-  margin-bottom: 14px;
-  border-radius: 15px;
+  margin-bottom: 12px;
+  border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.16) !important;
   background: rgba(255, 255, 255, 0.08) !important;
   color: #fff !important;
@@ -355,7 +356,7 @@
 .auth-divider {
   display: flex;
   align-items: center;
-  margin: 6px 0 14px;
+  margin: 4px 0 12px;
   text-align: center;
   color: rgba(255, 255, 255, 0.45);
   font-size: 12px;
@@ -377,27 +378,59 @@
 .auth-hint {
   font-size: 12px;
   color: rgba(255, 255, 255, 0.45);
-  margin-top: 10px;
+  margin-top: 8px;
   text-align: center;
   line-height: 1.4;
 }
 
-.auth-switch-link {
-  background: none;
-  border: none;
-  color: #00d4ff;
-  text-decoration: underline;
-  cursor: pointer;
-  padding: 0;
-  font-size: 13px;
-  margin-top: 14px;
-  text-align: center;
-  display: block;
+/* "Continue as guest" button - clean secondary option prompting registration first */
+.guest-btn {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  font-weight: 500;
-  transition: color 0.2s;
+  height: 42px;
+  margin-top: 10px !important;
+  margin-bottom: 0 !important;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-weight: 600 !important;
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: none !important;
+  transition: all 0.2s ease;
 }
 
-.auth-switch-link:hover {
-  color: #00ff88;
+.guest-btn:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+}
+
+/* "Home" link at the very bottom - dull natural grey with no background color */
+.auth-home-link {
+  background: none !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: rgba(255, 255, 255, 0.45) !important;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0 !important;
+  margin-top: 14px !important;
+  height: auto !important;
+  display: block;
+  text-align: center;
+  width: 100%;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.auth-home-link:hover {
+  color: rgba(255, 255, 255, 0.75) !important;
+  text-decoration: underline;
 }

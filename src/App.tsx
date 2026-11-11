@@ -11,9 +11,10 @@ function routeFromPath(path: string): PageRoute {
   const clean = path.replace(/\/+$/, '')
   if (clean === '/signup') return 'signup'
   if (clean === '/login') return 'login'
-  if (clean === '/home' || clean === '') return 'home'
+  if (clean === '/home') return 'home'
   if (clean === '/auth/verify' || clean === '/verify') return 'verify'
-  return 'home'
+  // Default to login so sign-in/sign-up is the first thing users see
+  return 'login'
 }
 
 function App() {
@@ -41,6 +42,14 @@ function App() {
     }
     checkAuth()
   }, [])
+
+  // Ensure root URL opens /login as the default landing view
+  useEffect(() => {
+    const clean = path.replace(/\/+$/, '')
+    if (clean === '' || clean === '/') {
+      window.history.replaceState(null, '', '/login')
+    }
+  }, [path])
 
   // Handle /auth/verify magic link flow
   useEffect(() => {
