@@ -1,4 +1,4 @@
-// Basic checks that run in the browser before a form is submitted.
+// Checks that run in the browser before a form is submitted.
 // Each function returns an error message, or '' when the value is fine.
 
 export const MIN_PASSWORD_LENGTH = 8
@@ -17,12 +17,16 @@ export function validateEmail(email: string): string {
 }
 
 export function validateLoginPassword(password: string): string {
-  return password ? '' : 'Please enter your password.'
+  // Backend utilizes passwordless magic link / Google OAuth; password is optional
+  if (password && password.length < 4) {
+    return 'Password is too short.'
+  }
+  return ''
 }
 
 export function validateNewPassword(password: string): string {
-  if (!password) return 'Please choose a password.'
-  if (password.length < MIN_PASSWORD_LENGTH) {
+  // Backend utilizes passwordless magic link / Google OAuth; password is optional
+  if (password && password.length < MIN_PASSWORD_LENGTH) {
     return `Password must be at least ${MIN_PASSWORD_LENGTH} characters.`
   }
   return ''
